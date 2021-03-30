@@ -30,19 +30,19 @@ public class SimpleMazeGenerator extends AMazeGenerator{
         visit[0][0]=true;
 
         while (i!=row-1 && j!=column-1){
-            if(i>0 && visit[i-1][j]!=true) {
+            if(i>0 && !visit[i-1][j]) {
                 up.setAll(i - 1, j);
                 posList.add(up);
             }
-            if(j>0 && visit[i][j-1]!=true) {
+            if(j>0 && !visit[i][j-1]) {
                 left.setAll(i, j - 1);
                 posList.add(left);
             }
-            if(i<row-1&& visit[i+1][j]!=true) {
+            if(i<row-1&& !visit[i+1][j]) {
                 down.setAll(i + 1, j);
                 posList.add(down);
             }
-            if(j<column-1 && visit[i][j+1]!=true) {
+            if(j<column-1 && !visit[i][j+1]) {
                 right.setAll(i, j + 1);
                 posList.add(right);
             }
@@ -66,7 +66,6 @@ public class SimpleMazeGenerator extends AMazeGenerator{
                 }
             }
         }
-
             return m;
     }
 }
