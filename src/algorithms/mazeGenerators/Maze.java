@@ -1,7 +1,5 @@
 package algorithms.mazeGenerators;
 
-import java.lang.reflect.Array;
-
 public class Maze {
     private Position start;
     private Position goal;
@@ -39,7 +37,7 @@ public class Maze {
             for (int j = 0; j < getM()[0].length; j++) {
                 if (p1.getRowIndex() == i && p1.getColumnIndex() == j)
                     System.out.print("S");
-                else if (p2.getRowIndex() - 1 == i && p2.getColumnIndex() - 1 == j)
+                else if (p2.getRowIndex()  == i && p2.getColumnIndex() == j)
                     System.out.print("E");
                 else
                     System.out.print(getM()[i][j]);
