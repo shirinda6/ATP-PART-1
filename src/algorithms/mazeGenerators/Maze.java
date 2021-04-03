@@ -1,5 +1,8 @@
 package algorithms.mazeGenerators;
 
+import java.util.List;
+import java.util.Random;
+
 public class Maze {
     private Position start;
     private Position goal;
@@ -29,21 +32,48 @@ public class Maze {
         return maze ;
     }
 
+
+
     public void print() {
-        Position p1 = getStartPosition();
-        Position p2 = getGoalPosition();
+        Position statP = getStartPosition();
+        Position goalP = getGoalPosition();
 
         for (int i = 0; i < getM().length; i++) {
+            System.out.print("{ ");
             for (int j = 0; j < getM()[0].length; j++) {
-                if (p1.getRowIndex() == i && p1.getColumnIndex() == j)
-                    System.out.print("S");
-                else if (p2.getRowIndex()  == i && p2.getColumnIndex() == j)
-                    System.out.print("E");
+                if (statP.getRowIndex() == i && statP.getColumnIndex() == j)
+                    System.out.print("S ");
+                else if (goalP.getRowIndex()  == i && goalP.getColumnIndex() == j)
+                    System.out.print("E ");
                 else
-                    System.out.print(getM()[i][j]);
+                    System.out.print(getM()[i][j]+ " ");
             }
+            System.out.print("}");
             System.out.println();
         }
     }
+    public Maze fillMaze() {
+        for (int i = 0; i < getM().length ; i++) {
+            for (int j = 0; j < getM()[0].length ; j++) {
+                getM()[i][j] = 1;
+            }
+        }
+        return this;
+    }
+    public void randomGoal(Maze m,int row,int column){
+        Random r = new Random();
+        int x = r.nextInt(3);
+        if(x == 0){
+            m.setGoal(new Position(r.nextInt(row-1),column-1));
+        }
+        else if(x == 1){
+            m.setGoal(new Position(r.nextInt(row-1)+1,0));
+        }
+        else {
+            m.setGoal(new Position(row-1,r.nextInt(column-1)));
+        }
+
+    }
+
 
 }

@@ -3,68 +3,69 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
-
 public class SimpleMazeGenerator extends AMazeGenerator{
 
     @Override
     public Maze generate(int row, int column) {
+        Maze m =new Maze(row,column);
+        m.fillMaze();
         Random r = new Random();
-        Maze m = new Maze(row,column);
-        for (int i = 0; i < row-1; i++) {
-            for (int j = 0; j <column-1 ; j++) {
-                m.getM()[i][j]=1;
-            }
-        }
+        Position up = new Position();
+        Position down = new Position();
+        Position left = new Position();
+        Position right = new Position();
+        Position cur;
+        List<Position>posList= new ArrayList<>();
+        List<Position>neighbors= new ArrayList<>();
+
         m.setStart(new Position(0,0));
-        List<Position>posList= new ArrayList<Position>();
-        Position up = new Position(0,0);
-        Position down = new Position(0,0);
-        Position left = new Position(0,0);
-        Position right = new Position(0,0);
-        Position cur = new Position(0,0);
-        boolean [][]visit= new boolean[row][column];
-
-
-        int i=0,j =0;
-        visit[0][0]=true;
+        posList.add(m.getStartPosition());
+        int i=0,j =0,index =0;
 
         while (i!=row-1 && j!=column-1){
-            if(i>0 && !visit[i-1][j]) {
+            if(i>0 ) {
                 up.setAll(i - 1, j);
-                posList.add(up);
+                neighbors.add(up);
             }
-            if(j>0 && !visit[i][j-1]) {
-                left.setAll(i, j - 1);
-                posList.add(left);
-            }
-            if(i<row-1&& !visit[i+1][j]) {
-                down.setAll(i + 1, j);
-                posList.add(down);
-            }
-            if(j<column-1 && !visit[i][j+1]) {
+            if(j<column-1) {
                 right.setAll(i, j + 1);
-                posList.add(right);
+                neighbors.add(right);
             }
-            if(posList.size()==0){
-                cur.setAll(i,j);
-                m.setGoal(cur);
-                break;
+            if(i<row-1) {
+                down.setAll(i + 1, j);
+                neighbors.add(down);
+            }
+            if(j>0 ) {
+                left.setAll(i, j - 1);
+                neighbors.add(left);
+            }
 
-            }
-            if (posList.size()>=1) {
-                cur = posList.get(r.nextInt(posList.size()));
+            cur = neighbors.get( r.nextInt(neighbors.size()));
+            if(cur!=null) {
                 i = cur.getRowIndex();
                 j = cur.getColumnIndex();
-                visit[i][j] = true;
                 m.getM()[i][j] = 0;
-                posList.clear();
-
+                if (!posList.contains(cur)) {
+                    posList.add(cur);
+                    index++;
+                }
                 if (i == row - 1 || j == column - 1) {
                     m.setGoal(cur);
                     break;
                 }
             }
+            else{
+                if (index>=1) {
+                    index--;
+                    i = posList.get(index).getRowIndex();
+                    j = posList.get(index).getColumnIndex();
+                    if (i == row - 1 || j == column - 1) {
+                        m.setGoal(new Position(i,j));
+                        break;
+                    }
+                }
+            }
+            neighbors.clear();
         }
             return m;
     }

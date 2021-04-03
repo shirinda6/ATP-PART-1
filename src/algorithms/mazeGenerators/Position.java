@@ -12,10 +12,6 @@ public class Position {
         Row = 0;
         Column = 0;
     }
-    public Position(Position p) {
-        Row = p.getRowIndex();
-        Column = p.getColumnIndex();
-    }
 
     public int getRowIndex(){
         return Row;
@@ -25,17 +21,23 @@ public class Position {
         return Column;
     }
 
-    public void setColumn(int column) {
-        Column = column;
-    }
     public void setAll(int row, int column) {
         Row=row;
         Column = column;
     }
 
+    public void setColumn(int column) {
 
+        Column = column;
+    }
 
     public void setRow(int row) {
+
         Row = row;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +Row +","+ Column + "}";
     }
 }
