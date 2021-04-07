@@ -9,6 +9,7 @@ public class SimpleMazeGenerator extends AMazeGenerator{
     public Maze generate(int row, int column) {
         Maze m =new Maze(row,column);
         m.fillMaze();
+      // m.fillRandom();
         Random r = new Random();
         Position up = new Position();
         Position down = new Position();
@@ -20,9 +21,10 @@ public class SimpleMazeGenerator extends AMazeGenerator{
 
         m.setStart(new Position(0,0));
         posList.add(m.getStartPosition());
-        int i=0,j =0,index =0;
+        int i=0,j =0,index =0,it=0;
 
         while (i!=row-1 && j!=column-1){
+            it++;
             if(i>0 ) {
                 up.setAll(i - 1, j);
                 neighbors.add(up);
@@ -49,7 +51,7 @@ public class SimpleMazeGenerator extends AMazeGenerator{
                     posList.add(cur);
                     index++;
                 }
-                if (i == row - 1 || j == column - 1) {
+                if ((i == row - 1 && j>0) || (j == column - 1 && i>0)) {
                     m.setGoal(cur);
                     break;
                 }
@@ -59,7 +61,7 @@ public class SimpleMazeGenerator extends AMazeGenerator{
                     index--;
                     i = posList.get(index).getRowIndex();
                     j = posList.get(index).getColumnIndex();
-                    if (i == row - 1 || j == column - 1) {
+                    if ((i == row - 1 && j>0) || (j == column - 1 && i>0)) {
                         m.setGoal(new Position(i,j));
                         break;
                     }

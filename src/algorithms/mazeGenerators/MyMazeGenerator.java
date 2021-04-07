@@ -20,15 +20,12 @@ public class MyMazeGenerator extends AMazeGenerator{
             curWall = wallList.stream().skip(r.nextInt(wallList.size())).findFirst().orElse(null);
             if(curWall!=null) {
                 List<Position> neigh = addNeighbor(maze, curWall, 0);
-
                 if (!neigh.isEmpty()) {
                     curNeigh = neigh.get(r.nextInt(neigh.size()));
                     connect(maze, curWall, curNeigh);
                 }
-
                 wallList.addAll(addNeighbor(maze, curWall, 1));
                 wallList.remove(curWall);
-
                 if (wallList.isEmpty() && !neigh.isEmpty()) {
                     pickGoal(maze, curWall);
                     break;
@@ -39,11 +36,11 @@ public class MyMazeGenerator extends AMazeGenerator{
     }
 
     private void connect(Maze maze,Position curWall, Position curNeigh) {
-        int rowB = (curNeigh.getRowIndex()+curWall.getRowIndex())/2;
-        int columnB= (curNeigh.getColumnIndex()+curWall.getColumnIndex())/2;
-        maze.getM()[rowB][columnB]=0;
-        maze.getM()[curWall.getRowIndex()][curWall.getColumnIndex()]=0;
-        maze.getM()[curNeigh.getRowIndex()][curNeigh.getColumnIndex()]=0;
+            int rowB = (curNeigh.getRowIndex()+curWall.getRowIndex())/2;
+            int columnB= (curNeigh.getColumnIndex()+curWall.getColumnIndex())/2;
+            maze.getM()[rowB][columnB]=0;
+            maze.getM()[curWall.getRowIndex()][curWall.getColumnIndex()]=0;
+            maze.getM()[curNeigh.getRowIndex()][curNeigh.getColumnIndex()]=0;
 
     }
 
@@ -67,12 +64,11 @@ public class MyMazeGenerator extends AMazeGenerator{
             return neighbors;
         }
 
-        public void cellMaze(Maze maze,Position p){
-                int row = p.getRowIndex();
-                int column = p.getColumnIndex();
-                maze.getM()[row][column]=0;
-        }
-
+    public void cellMaze(Maze maze,Position p){
+            int row = p.getRowIndex();
+            int column = p.getColumnIndex();
+            maze.getM()[row][column]=0;
+    }
 
     public void pickGoal(Maze maze,Position p) {
         if((p.getRowIndex()==maze.getM().length-1 || p.getRowIndex()==0 )|| (p.getColumnIndex()==maze.getM()[0].length-1 || p.getColumnIndex()==0))
@@ -98,6 +94,4 @@ public class MyMazeGenerator extends AMazeGenerator{
             }
         }
     }
-
-
 }

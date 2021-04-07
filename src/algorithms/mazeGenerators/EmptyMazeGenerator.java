@@ -1,6 +1,5 @@
 package algorithms.mazeGenerators;
 
-import java.lang.reflect.Array;
 import java.util.Random;
 
 public class EmptyMazeGenerator extends AMazeGenerator{

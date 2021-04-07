@@ -1,6 +1,5 @@
 package algorithms.mazeGenerators;
 
-import java.util.List;
 import java.util.Random;
 
 public class Maze {
@@ -48,8 +47,7 @@ public class Maze {
                 else
                     System.out.print(getM()[i][j]+ " ");
             }
-            System.out.print("}");
-            System.out.println();
+            System.out.println("}");
         }
     }
     public Maze fillMaze() {
@@ -60,6 +58,7 @@ public class Maze {
         }
         return this;
     }
+
     public void randomGoal(Maze m,int row,int column){
         Random r = new Random();
         int x = r.nextInt(3);
