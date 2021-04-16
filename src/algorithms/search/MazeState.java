@@ -1,6 +1,5 @@
-package algorithms.mazeGenerators.search;
+package algorithms.search;
 
-import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
 
 public class MazeState extends AState{
