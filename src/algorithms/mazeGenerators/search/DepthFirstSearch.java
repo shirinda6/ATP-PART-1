@@ -1,4 +1,4 @@
-package algorithms.search;
+package algorithms.mazeGenerators.search;
 
 public class DepthFirstSearch extends ASearchingAlgorithm{
     @Override
@@ -7,12 +7,12 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     }
 
     @Override
-    public int getNumberOfNodesEvaluated() {
-        return 0;
+    public Solution solve(ISearchable problem) {
+        return null;
     }
 
     @Override
-    public Solution solve(ISearchable problem) {
-        return null;
+    public int getNumberOfNodesEvaluated() {
+        return 0;
     }
 }
