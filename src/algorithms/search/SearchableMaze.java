@@ -28,22 +28,22 @@ public class SearchableMaze implements ISearchable {
             if (i==0)
                 continue;
             //column
-            if (position.getColumnIndex() + i >= 0) {
-                if (m1[position.getColumnIndex() + i][position.getRowIndex()] == 1)
-                    ans.add(new MazeState(current, 1, new Position(position.getColumnIndex() + i, position.getRowIndex())));
+            if (position.getColumnIndex() + i >= 0  && position.getColumnIndex() + i <= m1[0].length - 1) {
+                if (m1[position.getRowIndex()][position.getColumnIndex() + i] == 0)
+                    ans.add(new MazeState(current, current.getCost()+1, new Position(position.getRowIndex(), position.getColumnIndex() + i)));
             }
             //row
-            if (position.getRowIndex() + i >= 0) {
-                if (m1[position.getColumnIndex()][position.getRowIndex() + i] == 1)
-                    ans.add(new MazeState(current, 1, new Position(position.getColumnIndex(), position.getRowIndex() + i)));
+            if (position.getRowIndex() + i >= 0 && position.getRowIndex() + i <= m1.length - 1) {
+                if (m1[position.getRowIndex() + i][position.getColumnIndex()] == 0)
+                    ans.add(new MazeState(current, current.getCost()+1, new Position( position.getRowIndex() + i, position.getColumnIndex())));
             }
             //diagonally
             for (int j = -1; j < 2; j++) {
                 if (j==0)
                     continue;
-                if (position.getColumnIndex() + i >= 0 && position.getRowIndex() + j >= 0) {
-                    if (m1[position.getColumnIndex() + i][position.getRowIndex() + j] == 1)
-                        ans.add(new MazeState(current, 1, new Position(position.getColumnIndex(), position.getRowIndex() + i)));
+                if (position.getRowIndex() + i >= 0 && position.getColumnIndex() + j >= 0 && position.getRowIndex() + i <= m1.length - 1 && position.getColumnIndex() + j <= m1[0].length - 1) {
+                    if (m1[position.getRowIndex() + i][position.getColumnIndex() + j] == 0)
+                        ans.add(new MazeState(current, current.getCost()+1.5, new Position(position.getRowIndex() + i, position.getColumnIndex() + j)));
                 }
             }
         }

@@ -17,6 +17,7 @@ public class Maze {
 
     public void setGoal(Position goal) {
         this.goal = goal;
+        this.getM()[goal.getRowIndex()][goal.getColumnIndex()]=0;
     }
 
     public Position getStartPosition(){

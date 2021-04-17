@@ -6,8 +6,7 @@ public class BestFirstSearch extends ASearchingAlgorithm {
 
     @Override
     public String getName() {
-        String name = "BestFirstSearch";
-        return name;
+        return "BestFirstSearch";
     }
 
     @Override
@@ -21,29 +20,22 @@ public class BestFirstSearch extends ASearchingAlgorithm {
             return null;
         Set<AState> visited=new HashSet<>();
         AState start=problem.initial();
-        Queue<AState> queue=new PriorityQueue<>((AState s1, AState s2)->{return (int)(s1.getCost()-s2.getCost());});
+        Queue<AState> queue=new PriorityQueue<>((AState s1, AState s2)->(int)(s1.getCost()-s2.getCost()));
 
         queue.add(start);
-        AState state;
-        
+        visited.add(start);
         while (!queue.isEmpty()){
             numOfEvaluated++;
-            state=queue.remove();
-            visited.add(state);
-
-
-
-
+            AState state = queue.remove();
+            for (AState s: problem.getAllPossibleStates(state)) {
+                if (!visited.contains(s)) {
+                    if (problem.TestGoal(s))
+                        return buildSolution(s);
+                    queue.add(s);
+                    visited.add(s);
+                }
+            }
         }
         return null;
-    }
-
-    @Override
-    protected Solution buildSolution(AState state) {
-        Solution solution = new Solution();
-
-
-
-        return super.buildSolution(state);
     }
 }
