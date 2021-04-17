@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class SearchableMaze implements ISearchable {
     private Maze maze;
 
-    SearchableMaze(Maze maze_1){
+    public SearchableMaze(Maze maze_1){
         maze = maze_1;
     }
 
