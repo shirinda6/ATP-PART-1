@@ -2,6 +2,10 @@ package algorithms.search;
 
 import java.util.*;
 
+/**
+ * Comparator for the Priority Queue. compare by cost of every state.
+ */
+
 class StComp implements Comparator<AState> {
     @Override
     public int compare(AState st1, AState st2) {
