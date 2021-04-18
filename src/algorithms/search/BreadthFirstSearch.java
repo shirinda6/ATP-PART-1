@@ -1,4 +1,5 @@
 package algorithms.search;
+
 import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
@@ -19,12 +20,10 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         Set<AState> visited = new HashSet<>();
         AState start = problem.initial();
 
-
-        Queue queue = new LinkedList();
         queue.add(start);
         visited.add(start);
         while (!queue.isEmpty()) {
-            AState state = (AState) queue.remove();
+            AState state = (AState) queue.poll();
             numOfEvaluated++;
             List<AState> list = problem.getAllSuccessors(state);
 

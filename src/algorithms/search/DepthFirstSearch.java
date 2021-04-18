@@ -8,6 +8,12 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
         return "DepthFirstSearch";
     }
 
+    /**
+     * solving the problem by depth first search algorithm
+     * @param problem: the problem to solve
+     * @return a solution
+     */
+
     @Override
     public Solution solve(ISearchable problem) {
         if(problem==null)
