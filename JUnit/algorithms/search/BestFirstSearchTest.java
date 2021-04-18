@@ -3,7 +3,7 @@ package algorithms.search;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * class which checks extreme cases of Breadth First SearchTest algorithm
+ * class which checks extreme cases of Best First SearchTest algorithm
  */
 
 class BestFirstSearchTest {
