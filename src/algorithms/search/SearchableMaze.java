@@ -39,12 +39,12 @@ public class SearchableMaze implements ISearchable {
             //column
             if (position.getColumnIndex() + i >= 0  && position.getColumnIndex() + i <= m1[0].length - 1) {
                 if (m1[position.getRowIndex()][position.getColumnIndex() + i] == 0)
-                    ans.add(new MazeState(current, current.getCost()+1, new Position(position.getRowIndex(), position.getColumnIndex() + i)));
+                    ans.add(new MazeState(current, current.getCost()+10, new Position(position.getRowIndex(), position.getColumnIndex() + i)));
             }
             //row
             if (position.getRowIndex() + i >= 0 && position.getRowIndex() + i <= m1.length - 1) {
                 if (m1[position.getRowIndex() + i][position.getColumnIndex()] == 0)
-                    ans.add(new MazeState(current, current.getCost()+1, new Position( position.getRowIndex() + i, position.getColumnIndex())));
+                    ans.add(new MazeState(current, current.getCost()+10, new Position( position.getRowIndex() + i, position.getColumnIndex())));
             }
             //diagonally
             for (int j = -1; j < 2; j++) {
@@ -52,7 +52,8 @@ public class SearchableMaze implements ISearchable {
                     continue;
                 if (position.getRowIndex() + i >= 0 && position.getColumnIndex() + j >= 0 && position.getRowIndex() + i <= m1.length - 1 && position.getColumnIndex() + j <= m1[0].length - 1) {
                     if (m1[position.getRowIndex() + i][position.getColumnIndex() + j] == 0)
-                        ans.add(new MazeState(current, current.getCost()+1.5, new Position(position.getRowIndex() + i, position.getColumnIndex() + j)));
+                        if (m1[position.getRowIndex()][position.getColumnIndex() + j] == 0 || m1[position.getRowIndex() + i][position.getColumnIndex()] == 0 )
+                            ans.add(new MazeState(current, current.getCost()+15, new Position(position.getRowIndex() + i, position.getColumnIndex() + j)));
                 }
             }
         }
