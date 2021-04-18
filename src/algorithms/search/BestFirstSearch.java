@@ -20,7 +20,7 @@ class StComp implements Comparator<AState> {
 public class BestFirstSearch extends BreadthFirstSearch {
     public BestFirstSearch() {
         super();
-        queue = new PriorityQueue<>(new StComp());
+        queue = new PriorityQueue<>((s1, s2)->(int)(s1.getCost() - s2.getCost()));
     }
 
     @Override

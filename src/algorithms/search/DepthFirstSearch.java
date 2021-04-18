@@ -18,23 +18,23 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
     public Solution solve(ISearchable problem) {
         if(problem==null)
             return null;
-        Set<AState> visited=new HashSet<>();
+        Set<String> visited=new HashSet<>();
         AState start=problem.initial();
         Stack<AState> queue=new Stack<>();
 
         queue.push(start);
-        visited.add(start);
+        visited.add(start.toString());
 
         while(!queue.isEmpty()){
             numOfEvaluated++;
             AState state = queue.pop();
 
             for (AState s : problem.getAllSuccessors(state)) {
-                if (!visited.contains(s)) {
+                if (!visited.contains(s.toString())) {
                     if (problem.TestGoal(s))
                         return buildSolution(s);
                     queue.push(s);
-                    visited.add(s);
+                    visited.add(s.toString());
                 }
             }
         }

@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class MazeState extends AState{
     private Position current_pos;
+    public static int[][] maze;
 
     /**
      * constructor for maze state which present position in the maze.

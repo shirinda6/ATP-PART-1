@@ -8,6 +8,7 @@ import java.io.Serializable;
 public abstract class AState implements Serializable{
     private AState predecessor;
     private double cost;
+    public static int[][] maze;
 
     public AState(AState predecessor, double cost) {
         this.predecessor = predecessor;

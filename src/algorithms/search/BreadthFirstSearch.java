@@ -4,6 +4,7 @@ import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
     protected Queue<AState> queue;
+
     public BreadthFirstSearch() {
         super();
         queue=new LinkedList<>();
@@ -15,28 +16,24 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
      */
 
     public Solution solve(ISearchable problem) {
-        if (problem == null)
-            return null;
-        Set<AState> visited = new HashSet<>();
-        AState start = problem.initial();
+        Set<String> visited=new HashSet<>();
+        AState start=problem.initial();
 
         queue.add(start);
-        visited.add(start);
+        visited.add(start.toString());
         while (!queue.isEmpty()) {
-            AState state = (AState) queue.poll();
             numOfEvaluated++;
-            List<AState> list = problem.getAllSuccessors(state);
-
-            while (!list.isEmpty()) {
-                AState s = list.remove(0);
-                if (!visited.contains(s)) {
-                    visited.add(s);
-                    queue.add(s);
+            AState current = queue.poll();
+            for (AState state : problem.getAllSuccessors(current)) {
+                if (!visited.contains(state.toString())) {
+                    if(problem.TestGoal(state))
+                        return buildSolution(state);
+                    visited.add(state.toString());
+                    queue.add(state);
                 }
-                if (problem.TestGoal(s))
-                    return buildSolution(s);
             }
         }
+
         return null;
     }
 
