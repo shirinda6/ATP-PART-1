@@ -3,6 +3,9 @@ package algorithms.mazeGenerators;
 import java.util.Objects;
 
 public class Position {
+    /**
+     * represents location in the maze - by row and column
+     */
     private int Row;
     private int Column;
 

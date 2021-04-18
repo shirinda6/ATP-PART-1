@@ -1,7 +1,10 @@
 package algorithms.search;
 import algorithms.mazeGenerators.*;
-
 import java.util.ArrayList;
+
+/**
+ * class which turn maze problem to searchable problem
+ */
 
 public class SearchableMaze implements ISearchable {
     private Maze maze;
@@ -15,6 +18,12 @@ public class SearchableMaze implements ISearchable {
         MazeState m = new MazeState(null,0, maze.getStartPosition());
         return m;
     }
+
+    /**
+     * function which return all neighbors from a given position
+     * @param current : position in the maze
+     * @return list of all his neighbors
+     */
 
     @Override
     public ArrayList<AState> getAllSuccessors(AState current) {

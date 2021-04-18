@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 public class MyMazeGenerator extends AMazeGenerator{
-
+    /**
+     * Generate a maze
+     * @param row,column
+     * @return maze by prim algorithm
+     */
     public Maze generate(int row, int column) {
         Maze maze = new Maze(row,column);
         maze.fillMaze();

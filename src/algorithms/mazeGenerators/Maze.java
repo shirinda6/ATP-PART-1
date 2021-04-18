@@ -3,6 +3,9 @@ package algorithms.mazeGenerators;
 import java.util.Random;
 
 public class Maze {
+    /**
+     * represents a maze : by 2-dimensional array
+     */
     private Position start;
     private Position goal;
     private int [][]maze;

@@ -1,12 +1,15 @@
 package algorithms.search;
 
-import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
-
 import java.util.Objects;
 
 public class MazeState extends AState{
     private Position current_pos;
+
+    /**
+     * constructor for maze state which present position in the maze.
+     * @param predecessor,double,Position
+     */
 
     public MazeState(AState predecessor, double cost, Position position) {
         super(predecessor, cost);

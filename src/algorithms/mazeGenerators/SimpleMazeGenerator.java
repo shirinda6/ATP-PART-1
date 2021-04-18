@@ -4,7 +4,11 @@ import java.util.List;
 import java.util.Random;
 
 public class SimpleMazeGenerator extends AMazeGenerator{
-
+    /**
+     * Generate a maze
+     * @param row,column
+     * @return maze by random algorithm
+     */
     @Override
     public Maze generate(int row, int column) {
         Maze m =new Maze(row,column);

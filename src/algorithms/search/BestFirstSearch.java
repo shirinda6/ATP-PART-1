@@ -8,6 +8,10 @@ class StComp implements Comparator<AState> {
         return Double.compare(st1.getCost(), st2.getCost());
     }
 }
+/**
+ * implement a best first search by using solve of BreadthFirstSearch and priority queue.
+ * extends BreadthFirstSearch.
+ */
 
 public class BestFirstSearch extends BreadthFirstSearch {
     public BestFirstSearch() {
