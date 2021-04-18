@@ -40,6 +40,7 @@ public class MyMazeGenerator extends AMazeGenerator{
     }
 
     private void connect(Maze maze,Position curWall, Position curNeigh) {
+            //Creates a transition between the 2 parameters
             int rowB = (curNeigh.getRowIndex()+curWall.getRowIndex())/2;
             int columnB= (curNeigh.getColumnIndex()+curWall.getColumnIndex())/2;
             maze.getM()[rowB][columnB]=0;
@@ -49,6 +50,7 @@ public class MyMazeGenerator extends AMazeGenerator{
     }
 
     public List<Position> addNeighbor(Maze m,Position cell, int val) {
+            //Adds to the list the possible neighbors of the cell
             List<Position>neighbors = new ArrayList<>();
             int row = cell.getRowIndex();
             int column = cell.getColumnIndex();
@@ -69,12 +71,14 @@ public class MyMazeGenerator extends AMazeGenerator{
         }
 
     public void cellMaze(Maze maze,Position p){
+            //Set 0 at the value of the cell
             int row = p.getRowIndex();
             int column = p.getColumnIndex();
             maze.getM()[row][column]=0;
     }
 
     public void pickGoal(Maze maze,Position p) {
+        //pick up a random cell for a goal
         if((p.getRowIndex()==maze.getM().length-1 || p.getRowIndex()==0 )|| (p.getColumnIndex()==maze.getM()[0].length-1 || p.getColumnIndex()==0))
             maze.setGoal(p);
         else {

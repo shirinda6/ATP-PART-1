@@ -35,8 +35,6 @@ public class Maze {
         return maze ;
     }
 
-
-
     public void print() {
         Position statP = getStartPosition();
         Position goalP = getGoalPosition();
@@ -55,6 +53,7 @@ public class Maze {
         }
     }
     public Maze fillMaze() {
+        //fill the maze with value 1 : Turns all the cells into walls
         for (int i = 0; i < getM().length ; i++) {
             for (int j = 0; j < getM()[0].length ; j++) {
                 getM()[i][j] = 1;
@@ -64,6 +63,7 @@ public class Maze {
     }
 
     public void randomGoal(Maze m,int row,int column){
+        //pick up a random cell for a goal
         Random r = new Random();
         int x = r.nextInt(3);
         if(x == 0){
