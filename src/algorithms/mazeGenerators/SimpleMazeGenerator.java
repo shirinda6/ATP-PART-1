@@ -51,7 +51,7 @@ public class SimpleMazeGenerator extends AMazeGenerator{
                     posList.add(cur);
                     index++;
                 }
-                if ((i == row - 1 && j>0) || (j == column - 1 && i>0)) {
+                if (i == row - 1 || j == column - 1 ) {
                     m.setGoal(cur);
                     break;
                 }

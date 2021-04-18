@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public interface ISearchable {
     AState initial();
 
-    ArrayList<AState> getAllPossibleStates(AState current);
+    ArrayList<AState> getAllSuccessors(AState current);
 
     boolean TestGoal(AState state);
 }

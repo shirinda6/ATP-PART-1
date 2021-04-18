@@ -1,13 +1,11 @@
 package algorithms.search;
-
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 public class BreadthFirstSearch extends ASearchingAlgorithm {
+    protected Queue<AState> queue;
     public BreadthFirstSearch() {
         super();
+        queue=new LinkedList<>();
     }
     /**
      * solving the problem by breadth first search algorithm
@@ -16,28 +14,30 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
      */
 
     public Solution solve(ISearchable problem) {
-        if(problem==null)
+        if (problem == null)
             return null;
-        Set<AState> visited=new HashSet<>();
-        AState start=problem.initial();
-        Queue<AState> queue=new LinkedList<>();
+        Set<AState> visited = new HashSet<>();
+        AState start = problem.initial();
 
+
+        Queue queue = new LinkedList();
         queue.add(start);
         visited.add(start);
         while (!queue.isEmpty()) {
+            AState state = (AState) queue.remove();
             numOfEvaluated++;
-            AState current = queue.poll();
-            for (AState state : problem.getAllPossibleStates(current)) {
-                if (!visited.contains(state)) {
-                    if(problem.TestGoal(state)) {
-                        return buildSolution(state);
-                    }
-                    visited.add(state);
-                    queue.add(state);
+            List<AState> list = problem.getAllSuccessors(state);
+
+            while (!list.isEmpty()) {
+                AState s = list.remove(0);
+                if (!visited.contains(s)) {
+                    visited.add(s);
+                    queue.add(s);
                 }
+                if (problem.TestGoal(s))
+                    return buildSolution(s);
             }
         }
-        System.out.println("BFS: cant find solution!!!!!");
         return null;
     }
 

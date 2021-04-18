@@ -1,9 +1,6 @@
 package algorithms.search;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 public class DepthFirstSearch extends ASearchingAlgorithm{
     @Override
@@ -17,20 +14,20 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
             return null;
         Set<AState> visited=new HashSet<>();
         AState start=problem.initial();
-        Queue<AState> queue=new LinkedList<>();
+        Stack<AState> queue=new Stack<>();
 
-        queue.add(start);
+        queue.push(start);
         visited.add(start);
 
         while(!queue.isEmpty()){
             numOfEvaluated++;
-            AState state = queue.remove();
+            AState state = queue.pop();
 
-            for (AState s : problem.getAllPossibleStates(state)) {
+            for (AState s : problem.getAllSuccessors(state)) {
                 if (!visited.contains(s)) {
                     if (problem.TestGoal(s))
                         return buildSolution(s);
-                    queue.add(s);
+                    queue.push(s);
                     visited.add(s);
                 }
             }

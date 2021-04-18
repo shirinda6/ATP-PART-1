@@ -17,7 +17,7 @@ public class SearchableMaze implements ISearchable {
     }
 
     @Override
-    public ArrayList<AState> getAllPossibleStates(AState current) {
+    public ArrayList<AState> getAllSuccessors(AState current) {
         if (!(current instanceof MazeState))
             return null;
         int[][] m1 = maze.getM();
